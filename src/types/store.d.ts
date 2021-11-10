@@ -1,25 +1,25 @@
 /*vuex ts*/
 import { RouterTy } from '@/types/router'
 
-interface StateTy {
-  app: AppTy
-  permission: PermissionTy
-  user: UserTy
-  tagsView: TagsViewTy
+interface RootState {
+  app: AppState
+  permission: PermissionState
+  user: UserState
+  tagsView: TagsViewState
 }
 
-interface TagsViewTy {
+interface TagsViewState {
   visitedViews: RouterTy
   cachedViews: RouterTy
 }
 
-interface UserTy {
+interface UserState {
   username: string
   avatar: string
   roles: Array<string>
 }
 
-interface AppTy {
+interface AppState {
   sidebar: {
     opened: boolean
     //opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
@@ -29,7 +29,7 @@ interface AppTy {
   cachedViews: Array<string>
 }
 
-interface PermissionTy {
+interface PermissionState {
   isGetUserInfo: boolean //Whether the permissions have been set
   routes: RouterTy //Collect filtered asynchronous routes and static routes
   addRoutes: RouterTy //Asynchronous routing after filtering

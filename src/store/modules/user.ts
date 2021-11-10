@@ -1,6 +1,6 @@
 import { loginReq, logoutReq, getInfoReq } from '@/api/user'
 import { setToken, removeToken } from '@/utils/auth'
-import { UserTy } from '@/types/store'
+import { UserState } from '@/types/store'
 import { DynamicProps } from '@/types/utils'
 //token: getToken(),
 
@@ -16,10 +16,10 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const mutations = {
-  M_username: (state: UserTy, username: string) => {
+  M_username: (state: UserState, username: string) => {
     state.username = username
   },
-  M_roles: (state: UserTy, roles: Array<string>) => {
+  M_roles: (state: UserState, roles: Array<string>) => {
     state.roles = roles
   }
 }

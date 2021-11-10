@@ -1,6 +1,6 @@
 import { constantRoutes, asyncRoutes } from '@/router'
 import settings from '@/settings'
-import { PermissionTy } from '@/types/store'
+import { PermissionState } from '@/types/store'
 import { RouteItemTy, RouterRowTy, RouterTy } from '@/types/router'
 import { DynamicProps } from '@/types/utils'
 
@@ -69,7 +69,7 @@ export function filterAsyncRoutes(routes: RouterTy, roles: Array<string>) {
   return res
 }
 
-const state: PermissionTy = {
+const state: PermissionState = {
   isGetUserInfo: false, // get userInfo
   routes: [], //Collect filtered asynchronous routes and static routes
   addRoutes: [] //Asynchronous routing after filtering
@@ -105,11 +105,11 @@ const actions = {
 }
 
 const mutations = {
-  M_routes: (state: PermissionTy, routes: RouterTy) => {
+  M_routes: (state: PermissionState, routes: RouterTy) => {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
   },
-  M_isGetUserInfo: (state: PermissionTy, data: boolean) => {
+  M_isGetUserInfo: (state: PermissionState, data: boolean) => {
     state.isGetUserInfo = data
   }
 }

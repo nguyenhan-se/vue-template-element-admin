@@ -1,17 +1,7 @@
-import { AppTy } from '@/types/store'
+import { AppState } from '@/types/store'
 import { DynamicProps } from '@/types/utils'
 
-interface AppState {
-  sidebar: {
-    opened: boolean
-    //opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
-    // withoutAnimation: false
-  }
-  device: 'desktop'
-  cachedViews: Array<string>
-}
-
-const state: AppTy = {
+const state: AppState = {
   sidebar: {
     opened: true
     //opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
@@ -23,24 +13,24 @@ const state: AppTy = {
 
 const mutations = {
   /*Mutations suggest starting with M_*/
-  M_sidebar_opened: (state: AppTy, data: boolean) => {
+  M_sidebar_opened: (state: AppState, data: boolean) => {
     state.sidebar.opened = data
   },
-  M_toggleSideBar: (state: AppTy) => {
+  M_toggleSideBar: (state: AppState) => {
     state.sidebar.opened = !state.sidebar.opened
   },
 
   /*keepAlive cache*/
-  M_ADD_CACHED_VIEW: (state: AppTy, view: string) => {
+  M_ADD_CACHED_VIEW: (state: AppState, view: string) => {
     if (state.cachedViews.includes(view)) return
     state.cachedViews.push(view)
   },
 
-  M_DEL_CACHED_VIEW: (state: AppTy, view: string) => {
+  M_DEL_CACHED_VIEW: (state: AppState, view: string) => {
     const index = state.cachedViews.indexOf(view)
     index > -1 && state.cachedViews.splice(index, 1)
   },
-  M_RESET_CACHED_VIEW: (state: AppTy) => {
+  M_RESET_CACHED_VIEW: (state: AppState) => {
     state.cachedViews = []
   }
 }
