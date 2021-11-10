@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 import setting from '@/settings'
+import { useStore } from '@/store'
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 
 const key = computed(() => {
   return useRoute().path

@@ -53,24 +53,25 @@ export default {
 import { reactive, getCurrentInstance, watch, ref } from 'vue'
 import settings from '@/settings'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-import { ObjTy } from '@/types/common'
+import { useStore } from '@/store'
+import { DynamicProps } from '@/types/utils'
+
 let { proxy }: any = getCurrentInstance()
 //form
 let formInline = reactive({
   username: 'admin',
   password: '123456'
 })
-let state: ObjTy = reactive({
+let state: DynamicProps = reactive({
   otherQuery: {},
   redirect: undefined
 })
 
 /* listen router change  */
 const route = useRoute()
-let getOtherQuery = (query: ObjTy) => {
-  return Object.keys(query).reduce((acc: ObjTy, cur) => {
+let getOtherQuery = (query: DynamicProps) => {
+  return Object.keys(query).reduce((acc: DynamicProps, cur) => {
     if (cur !== 'redirect') {
       acc[cur] = query[cur]
     }

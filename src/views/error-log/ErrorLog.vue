@@ -106,14 +106,14 @@ let errorLogProd = () => {
 }
 /*表格查询和筛选*/
 let usertableData = ref([])
-let searchFormMixin: ObjTy = reactive({
+let searchFormMixin: DynamicProps = reactive({
   errorLog: '',
   pageUrl: '',
   createTime: '',
   id: ''
 })
 let selectPageReq = () => {
-  const data: ObjTy = Object.assign(searchFormMixin, {
+  const data: DynamicProps = Object.assign(searchFormMixin, {
     pageNum: pageNum,
     pageSize: pageSize
   })
@@ -127,13 +127,13 @@ let selectPageReq = () => {
     isParams: true,
     isAlertErrorMsg: false
   }
-  proxy.$axiosReq(reqConfig).then((resData: ObjTy) => {
+  proxy.$axiosReq(reqConfig).then((resData: DynamicProps) => {
     usertableData.value = resData.data?.records
     proxy.pageTotalMixin = resData.data?.total
   })
 }
 import tablePageHook from '@/hooks/tablePageHook'
-import { ObjTy } from '@/types/common'
+import { DynamicProps } from '@/types/utils'
 let { pageNum, pageSize, handleCurrentChange, handleSizeChange } = tablePageHook(selectPageReq)
 const dateTimePacking = (timeArr: Array<string>) => {
   if (timeArr && timeArr.length === 2) {
@@ -169,7 +169,7 @@ let deleteByIdReq = (id: string) => {
     bfLoading: true
   })
 }
-let tableDelClick = async (row: ObjTy) => {
+let tableDelClick = async (row: DynamicProps) => {
   await proxy.elConfirmMixin('确定', `您确定要删除【${row.pageUrl}】吗？`)
   deleteByIdReq(row.id).then(() => {
     selectPageReq()
@@ -186,7 +186,7 @@ const multiDelBtnClick = async () => {
   let rowDeleteIdArrMixin = []
   // let selectionArr = proxy.$refs.refuserTable //--c
   let deleteNameTitle = ''
-  rowDeleteIdArrMixin = multipleSelection.value.map((mItem: ObjTy) => {
+  rowDeleteIdArrMixin = multipleSelection.value.map((mItem: DynamicProps) => {
     deleteNameTitle = deleteNameTitle + mItem.pageUrl + ','
     return mItem.id
   })

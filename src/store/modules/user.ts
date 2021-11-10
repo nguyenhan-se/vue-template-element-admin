@@ -1,7 +1,7 @@
 import { loginReq, logoutReq, getInfoReq } from '@/api/user'
 import { setToken, removeToken } from '@/utils/auth'
-import { ObjTy } from '@/types/common'
 import { UserTy } from '@/types/store'
+import { DynamicProps } from '@/types/utils'
 //token: getToken(),
 
 const getDefaultState = () => {
@@ -27,10 +27,10 @@ const mutations = {
 const actions = {
   // user login
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  login({ commit }: ObjTy, data: ObjTy) {
+  login({ commit }: DynamicProps, data: DynamicProps) {
     return new Promise((resolve, reject) => {
       loginReq(data)
-        .then((res: ObjTy) => {
+        .then((res: DynamicProps) => {
           if (res.code === 20000) {
             //commit('SET_Token', res.data?.jwtToken)
             setToken(res.data?.jwtToken)
@@ -45,10 +45,10 @@ const actions = {
     })
   },
   // get user info
-  getInfo({ commit }: ObjTy) {
+  getInfo({ commit }: DynamicProps) {
     return new Promise((resolve, reject) => {
       getInfoReq()
-        .then((response: ObjTy) => {
+        .then((response: DynamicProps) => {
           const { data } = response
           console.log('come here baby ====> ', data)
           if (!data) {

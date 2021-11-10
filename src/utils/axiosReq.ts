@@ -2,7 +2,7 @@ import store from '@/store'
 import axios, { AxiosInstance } from 'axios'
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus'
 import { getToken, setToken } from '@/utils/auth'
-import { AxiosConfigTy, AxiosReqTy } from '@/types/common'
+import { AxiosConfigTy, AxiosReqTy } from '@/types/axios'
 let requestData: any
 let loadingE: any
 
@@ -46,19 +46,19 @@ service.interceptors.request.use(
     Promise.reject(err)
   }
 )
-// 响应拦截
+// Response interception
 service.interceptors.response.use(
   (res: any) => {
     console.log('res', res)
     if (requestData.afHLoading && loadingE) {
       loadingE.close()
     }
-    // 如果是下载文件直接返回
+    // If it is a download file, return directly
     if (requestData.isDownLoadFile) {
       return res.data
     }
     const { flag, msg, isNeedUpdateToken, updateToken } = res.data
-    //更新token保持登录状态
+    //Update token to stay logged in
     if (isNeedUpdateToken) {
       setToken(updateToken)
     }
@@ -81,9 +81,9 @@ service.interceptors.response.use(
     if (loadingE) loadingE.close()
     if (err && err.response && err.response.code) {
       if (err.response.code === 403) {
-        ElMessageBox.confirm('请重新登录', {
-          confirmButtonText: '重新登录',
-          cancelButtonText: '取消',
+        ElMessageBox.confirm('please login again', {
+          confirmButtonText: 're-register',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           store.dispatch('user/resetToken').then(() => {

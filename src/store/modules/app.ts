@@ -1,5 +1,15 @@
-import { ObjTy } from '@/types/common'
 import { AppTy } from '@/types/store'
+import { DynamicProps } from '@/types/utils'
+
+interface AppState {
+  sidebar: {
+    opened: boolean
+    //opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
+    // withoutAnimation: false
+  }
+  device: 'desktop'
+  cachedViews: Array<string>
+}
 
 const state: AppTy = {
   sidebar: {
@@ -35,7 +45,7 @@ const mutations = {
   }
 }
 const actions = {
-  A_sidebar_opened({ commit }: ObjTy, data: boolean) {
+  A_sidebar_opened({ commit }: DynamicProps, data: boolean) {
     commit('M_sidebar_opened', data)
   }
 }

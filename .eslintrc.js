@@ -16,16 +16,20 @@ module.exports = {
     defineExpose: true
   },
   extends: [
+    '@vue/typescript/recommended',
+    'plugin:@typescript-eslint/recommended',
+    '@vue/prettier',
+    'plugin:prettier/recommended',
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/typescript/recommended',
-    '@vue/prettier',
-    '@vue/prettier/@typescript-eslint'
+    '@vue/prettier/@typescript-eslint',
+
   ],
   parserOptions: {
     ecmaVersion: 2021
   },
   rules: {
+    'vue/script-setup-uses-vars': 'error',
     'linebreak-style': ['error', 'unix'],
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
@@ -45,7 +49,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['off'],
     //can config to 2 if need more then required
     '@typescript-eslint/no-unused-vars': [1],
-    'no-param-reassign': ['off']
+    'no-param-reassign': ['off'],
+    'vue/custom-event-name-casing': 'off',
   },
   overrides: [
     {

@@ -26,7 +26,8 @@ export default {
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
+
 const store = useStore()
 /*getter*/
 let getterValue = ref(null)

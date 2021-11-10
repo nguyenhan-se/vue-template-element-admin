@@ -1,7 +1,7 @@
 import request from 'axios'
-import { ObjTy } from '@/types/common'
+import { DynamicProps } from '@/types/utils'
 
-export function getList(params: ObjTy) {
+export function getList(params: DynamicProps) {
   return request({
     url: '/vue-admin-template/table/list',
     method: 'get',

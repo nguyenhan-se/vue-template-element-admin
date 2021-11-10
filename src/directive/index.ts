@@ -1,5 +1,6 @@
 import permission from './permission'
-import { ObjTy } from '@/types/common'
-export default function (app: ObjTy) {
+import { DynamicProps } from '@/types/utils'
+
+export default function (app: DynamicProps) {
   app.directive('permission', permission)
 }

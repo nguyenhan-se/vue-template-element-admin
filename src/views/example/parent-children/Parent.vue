@@ -7,9 +7,9 @@
 <script setup lang="ts">
 //script-setup vue官方说明
 //https://v3.cn.vuejs.org/api/sfc-script-setup.html#使用组件
+import { DynamicProps } from '@/types/utils'
 import { onMounted, getCurrentInstance, ref } from 'vue'
 import Children from './Children.vue'
-import { ObjTy } from '@/types/common'
 //获取store和router
 // import {useRouter} from 'vue-router'
 // import {useStore} from 'vuex'
@@ -27,7 +27,7 @@ const childMethod = () => {
   console.log(refChildren.value.childMethod())
   console.log(refChildren.value.childRef)
 }
-const emitParent = (data: ObjTy) => {
+const emitParent = (data: DynamicProps) => {
   console.log('得到子组件的信息111', data)
 }
 const fartherMethod = () => {

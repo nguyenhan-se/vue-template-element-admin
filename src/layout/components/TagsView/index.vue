@@ -32,13 +32,14 @@ import path from 'path'
 import { onMounted, getCurrentInstance, watch, toRefs, reactive, computed } from 'vue'
 //Get store and router
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
 import { RouterTy, RouteItemTy } from '@/types/router'
-import { ObjTy } from '@/types/common'
+import { useStore } from '@/store'
+import { DynamicProps } from '@/types/utils'
+
 const store = useStore()
 const router = useRouter()
 let { proxy }: any = getCurrentInstance()
-const state: ObjTy = reactive({
+const state: DynamicProps = reactive({
   visible: false,
   top: 0,
   left: 0,
@@ -166,7 +167,7 @@ const closeAllTags = (view: RouteItemTy) => {
   })
 }
 const toLastView = (visitedViews: RouterTy, view: RouteItemTy) => {
-  const latestView: ObjTy = visitedViews.slice(-1)[0]
+  const latestView: DynamicProps = visitedViews.slice(-1)[0]
   if (latestView) {
     router.push(latestView.fullPath)
   } else {

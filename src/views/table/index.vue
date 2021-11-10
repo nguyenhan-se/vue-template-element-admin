@@ -40,9 +40,10 @@
 <script setup lang="ts">
 import { toRefs, reactive, onBeforeMount } from 'vue'
 import { getList } from '@/api/table'
-import { ObjTy } from '@/types/common'
+import { DynamicProps } from '@/types/utils'
+
 const statusFilter = (status: string) => {
-  const statusMap: ObjTy = {
+  const statusMap: DynamicProps = {
     published: 'success',
     draft: 'info',
     deleted: 'danger'
@@ -60,12 +61,12 @@ onBeforeMount(() => {
 
 const fetchData = () => {
   state.listLoading = true
-  getList({}).then((response: ObjTy) => {
+  getList({}).then((response: DynamicProps) => {
     state.list = response.data?.data.items
     state.listLoading = false
   })
 }
-//导出属性到页面中使用
+//Export attributes to the page for use
 let { list, listLoading } = toRefs(state)
 </script>
 

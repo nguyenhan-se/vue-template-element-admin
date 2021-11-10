@@ -12,7 +12,7 @@
 <script setup>
 import { computed } from 'vue'
 //获取store和router
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 const store = useStore()
 const roles = computed(() => {
   return store.state.user.roles

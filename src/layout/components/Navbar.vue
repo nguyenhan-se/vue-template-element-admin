@@ -45,8 +45,8 @@ import Breadcrumb from './Breadcrumb'
 import Hamburger from './Hamburger'
 import { computed, getCurrentInstance } from 'vue'
 import settings from '@/settings'
-import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
+import { useStore } from '@/store'
 let { proxy }: any = getCurrentInstance()
 
 const opened = computed(() => {

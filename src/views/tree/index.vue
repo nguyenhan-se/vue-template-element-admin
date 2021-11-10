@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { watch, toRefs, reactive, ref } from 'vue'
-import { ObjTy } from '@/types/common'
+import { DynamicProps } from '@/types/utils'
 const state = reactive({
   filterText: '',
   data2: [
@@ -80,7 +80,7 @@ watch(
   },
   { immediate: false }
 )
-const filterNode = (value: string, data: ObjTy) => {
+const filterNode = (value: string, data: DynamicProps) => {
   if (!value) return true
   return data.label.indexOf(value) !== -1
 }

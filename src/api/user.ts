@@ -1,7 +1,7 @@
 import request from '@/utils/axiosReq'
-import { ObjTy } from '@/types/common'
+import { DynamicProps } from '@/types/utils'
 
-export function loginReq(data: ObjTy) {
+export function loginReq(data: DynamicProps) {
   return request({
     url: '/ty-user/user/loginValid',
     data,

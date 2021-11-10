@@ -5,6 +5,12 @@ interface StateTy {
   app: AppTy
   permission: PermissionTy
   user: UserTy
+  tagsView: TagsViewTy
+}
+
+interface TagsViewTy {
+  visitedViews: RouterTy
+  cachedViews: RouterTy
 }
 
 interface UserTy {
@@ -22,8 +28,9 @@ interface AppTy {
   device: 'desktop'
   cachedViews: Array<string>
 }
+
 interface PermissionTy {
-  isGetUserInfo: boolean //是否已经设置了权限
-  routes: RouterTy //将过滤后的异步路由和静态路由集合
-  addRoutes: RouterTy //过滤后的异步路由
+  isGetUserInfo: boolean //Whether the permissions have been set
+  routes: RouterTy //Collect filtered asynchronous routes and static routes
+  addRoutes: RouterTy //Asynchronous routing after filtering
 }

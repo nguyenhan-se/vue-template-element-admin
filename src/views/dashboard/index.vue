@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from '@/store'
 import { computed } from 'vue'
-import { useStore } from 'vuex'
 
 let store = useStore()
 const username = computed(() => {

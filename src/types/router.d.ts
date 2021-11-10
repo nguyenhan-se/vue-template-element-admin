@@ -1,7 +1,7 @@
 /*page common ts*/
 import { RouteRecordRaw } from 'vue-router'
 
-/*此处扩展的类型*/
+/*Type of extension here*/
 interface RouteItemTy {
   hidden?: boolean
   alwaysShow?: boolean

@@ -23,9 +23,12 @@ function checkPermission(el: any, binding: any) {
 //vue2和vue3中指令对比 https://jishuin.proginn.com/p/763bfbd29cb7
 export default {
   mounted(el: any, binding: any) {
+    console.log('come here abby ===>')
     checkPermission(el, binding)
   },
   componentUpdated(el: any, binding: any) {
+    console.log('come here abby ===>')
+
     checkPermission(el, binding)
   }
 }
